@@ -6,6 +6,7 @@ This exercise is intentionally left open ended.  Within you will find a skeleton
  - API retrieving a customer
  - API adding a customer
  - API updating a customer
+ - Unit tests
 
 # Expectations
 Implement the above listed requirements in a manner you see fitting.  Demonstrate design and implementation aspects you feel are important in a software project.
