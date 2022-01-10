@@ -7,6 +7,7 @@ using AutoFixture;
 using AutoMapper;
 using GroceryStore.Models;
 using GroceryStore.Services;
+using GroceryStoreAPI.ApiRequestModel;
 using GroceryStoreAPI.ApiResponseModel;
 using GroceryStoreAPI.Controllers;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
@@ -102,7 +103,52 @@ namespace GroceryStore.Api.UnitTests
             Assert.NotNull(response.Value);
             Assert.Equal(StatusCodes.Status404NotFound, response.StatusCode);
             Assert.Equal(HttpStatusCode.NotFound.ToString(), ((BadRequestModel)response.Value).Error);
+        }
 
+        [Fact]
+        public async Task CreateCustomerReturnsACustomer()
+        {
+            var customerToCreate = this.Fixture.Create<CustomerRequestModel>();
+            var customerToReturn = new CustomerModel
+            {
+                Id = 1,
+                Name = customerToCreate.Name
+            };
+
+            this.CustomerServiceMock.Setup(x => x.AddCustomer(It.IsAny<CustomerModel>())).ReturnsAsync(customerToReturn);
+
+            var result = await this.CustomerController.CreateCustomer(customerToCreate);
+            var response = result.Result as ObjectResult;
+
+            Assert.NotNull(response.Value);
+            Assert.Equal(StatusCodes.Status201Created, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task UpdateCustomerReturnsACustomer()
+        {
+            var customerToCreate = this.Fixture.Create<CustomerModel>();
+
+            this.CustomerServiceMock.Setup(x => x.UpdateCustomer(It.IsAny<CustomerModel>())).ReturnsAsync(customerToCreate);
+
+            var result = await this.CustomerController.UpdateCustomer(customerToCreate);
+            var response = result.Result as ObjectResult;
+
+            Assert.NotNull(response.Value);
+            Assert.Equal(StatusCodes.Status200OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task DeleteCustomerReturnsACustomer()
+        {
+            var customerIdToReturn = this.Fixture.Create<long>();
+
+            this.CustomerServiceMock.Setup(x => x.DeleteCustomer(It.IsAny<long>())).ReturnsAsync(customerIdToReturn);
+
+            var result = await this.CustomerController.DeleteCustomer(customerIdToReturn);
+            var response = result as StatusCodeResult;
+
+            Assert.Equal(StatusCodes.Status200OK, response.StatusCode);
         }
     }
 }

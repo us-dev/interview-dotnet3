@@ -5,6 +5,7 @@ using System.Reflection;
 using AutoMapper;
 using GroceryStore.Services;
 using GroceryStoreAPI.Bootstrap;
+using GroceryStoreAPI.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -52,8 +53,7 @@ namespace GroceryStoreAPI
                     Version = "V1",
                     Description = "Provides api endpoints for GroceryStore Service"
                 });
-
-                // using System.Reflection;
+                
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
@@ -86,6 +86,8 @@ namespace GroceryStoreAPI
             {
                 app.UseHsts();
             }
+
+            app.UseGlobalExceptionMiddleware();
 
             app.UseHttpsRedirection();
 
