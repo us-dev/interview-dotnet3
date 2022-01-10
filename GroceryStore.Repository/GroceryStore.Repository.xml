@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GroceryStore.Repository</name>
+    </assembly>
+    <members>
+        <member name="T:GroceryStore.Repository.BootstrapRepository">
+            <summary>
+            Bootstrap class for adding extension methods related to the Repository layer.
+            </summary>
+        </member>
+        <member name="M:GroceryStore.Repository.BootstrapRepository.AddRepositoryToServiceCollection(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds services to container for Repository project.
+            </summary>
+            <param name="serviceCollection">An instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+            <param name="configuration">An instance of <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/></param>
+        </member>
+        <member name="T:GroceryStore.Repository.CustomerRepository">
+            <summary>
+            Repository class providing custom logic for Customer domain object.
+            </summary>
+        </member>
+        <member name="P:GroceryStore.Repository.CustomerRepository.Logger">
+            <summary>
+            Gets or sets the ILogger instance.
+            </summary>
+        </member>
+        <member name="P:GroceryStore.Repository.CustomerRepository.DataStoreSettings">
+            <summary>
+            Gets or sets the Datastore settings using IOptions.
+            </summary>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.#ctor(Microsoft.Extensions.Logging.ILogger{GroceryStore.Repository.CustomerRepository},Microsoft.Extensions.Options.IOptions{GroceryStore.Models.DataStoreSettings})">
+            <summary>
+            Constructor for the <see cref="T:GroceryStore.Repository.CustomerRepository"/>
+            </summary>
+            <param name="logger">An instance of <see cref="T:Microsoft.Extensions.Logging.ILogger"/></param>
+            <param name="dataStoreSettings">An instance of <see cref="P:GroceryStore.Repository.CustomerRepository.DataStoreSettings"/>.</param>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.GetAllCustomers">
+            <summary>
+            Gets all the customer in the system.
+            </summary>
+            <returns>A list of <see cref="T:GroceryStore.Models.CustomerModel"/></returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.GetCustomerById(System.Int64)">
+            <summary>
+            Gets the particular CustomerModel by Id.
+            </summary>
+            <param name="id">An Id representing a Customer Model.</param>
+            <returns>Existing <see cref="T:GroceryStore.Models.CustomerModel"/> object.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.AddCustomer(GroceryStore.Models.CustomerModel)">
+            <summary>
+            Adds/Creates a new customer in the datastore.
+            </summary>
+            <param name="newCustomerModel">A new <see cref="T:GroceryStore.Models.CustomerModel"/> to be added.</param>
+            <returns>The newly added customer model.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.UpdateCustomer(GroceryStore.Models.CustomerModel)">
+            <summary>
+            Updates the Customer information in the existing datastore.
+            </summary>
+            <param name="updatedCustomerModel">A <see cref="T:GroceryStore.Models.CustomerModel"/></param>
+            <returns>The Customer object that has been successfully updated.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.DeleteCustomer(System.Int64)">
+            <summary>
+            Orchestrates the deletion of a Customer object from the datastore.
+            </summary>
+            <param name="customerId">An id representing a Customer <see cref="T:GroceryStore.Models.CustomerModel"/></param>
+            <returns>An id of the deleted record.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.ReadFile">
+            <summary>
+            Reads the file and returns the content as a <see cref="T:GroceryStore.Models.GroceryStoreModel"/> object.
+            </summary>
+            <returns>A populated <see cref="T:GroceryStore.Models.GroceryStoreModel"/></returns>
+        </member>
+        <member name="M:GroceryStore.Repository.CustomerRepository.SaveFile(GroceryStore.Models.GroceryStoreModel)">
+            <summary>
+            Saves the file by writing a new content.
+            </summary>
+            <param name="groceryStoreModelToSave"></param>
+            <returns>An empty Task.</returns>
+        </member>
+        <member name="T:GroceryStore.Repository.ICustomerRepository">
+            <summary>
+            Interface that defines the actions that can be taken to perform actions on Customer object.
+            </summary>
+        </member>
+        <member name="M:GroceryStore.Repository.ICustomerRepository.AddCustomer(GroceryStore.Models.CustomerModel)">
+            <summary>
+            Adds/Creates a new customer in the datastore.
+            </summary>
+            <param name="newCustomerModel">A new <see cref="T:GroceryStore.Models.CustomerModel"/> to be added.</param>
+            <returns>The newly added customer model.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.ICustomerRepository.DeleteCustomer(System.Int64)">
+            <summary>
+            Orchestrates the deletion of a Customer object from the datastore.
+            </summary>
+            <param name="customerId">An id representing a Customer <see cref="T:GroceryStore.Models.CustomerModel"/></param>
+            <returns>An id of the deleted record.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.ICustomerRepository.GetAllCustomers">
+            <summary>
+            Gets all the customer in the system.
+            </summary>
+            <returns>A list of <see cref="T:GroceryStore.Models.CustomerModel"/></returns>
+        </member>
+        <member name="M:GroceryStore.Repository.ICustomerRepository.GetCustomerById(System.Int64)">
+            <summary>
+            Gets the particular CustomerModel by Id.
+            </summary>
+            <param name="id">An Id representing a Customer Model.</param>
+            <returns>Existing <see cref="T:GroceryStore.Models.CustomerModel"/> object.</returns>
+        </member>
+        <member name="M:GroceryStore.Repository.ICustomerRepository.UpdateCustomer(GroceryStore.Models.CustomerModel)">
+            <summary>
+            Updates the Customer information in the existing datastore.
+            </summary>
+            <param name="updatedCustomerModel">A <see cref="T:GroceryStore.Models.CustomerModel"/></param>
+            <returns>The Customer object that has been successfully updated.</returns>
+        </member>
+    </members>
+</doc>
