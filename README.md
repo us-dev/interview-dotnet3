@@ -16,3 +16,10 @@ Implement the above listed requirements in a manner you see fitting. Demonstrate
 
 # Publish
 Send us a public link to your solution.  If you don't want to make it public, feel free to just send us a ZIP file.
+
+## PLEASE READ THIS
+# Comments on code delivery
+- Not all unit tests are written for branch coverage. It can definitely be expanded.
+- The documents are written using Swashbuckle especially the API project. Redoc should also work based on XML comment structure.
+-- Multiple example for Swashbuckle can use a little more work using Filters.
+- Validatation are left out. Fluent Validation can be used to perform different validation for each layer.
