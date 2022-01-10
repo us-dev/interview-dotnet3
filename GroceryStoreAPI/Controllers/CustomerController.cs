@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
+using GroceryStoreAPI.ApiRequestModel;
 
 namespace GroceryStoreAPI.Controllers
 {
@@ -29,16 +31,24 @@ namespace GroceryStoreAPI.Controllers
         private ICustomerService CustomerService { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance of an Automapper.
+        /// </summary>
+        public IMapper Mapper { get; set; }
+
+        /// <summary>
         /// Default constructor for <see cref="CustomerController"/>
         /// </summary>
         /// <param name="logger">An instance of Logger. <see cref="Logger"/></param>
         /// <param name="customerService">An instance of <see cref="CustomerService"/></param>
+        /// <param name="mapper">An instance of an <see cref="IMapper"/></param>
         public CustomerController(
             ILogger<CustomerController> logger,
-            ICustomerService customerService)
+            ICustomerService customerService,
+            IMapper mapper)
         {
             this.Logger = logger;
             this.CustomerService = customerService;
+            this.Mapper = mapper;
         }
 
         /// <summary>
@@ -76,7 +86,7 @@ namespace GroceryStoreAPI.Controllers
                 result = NotFound(new BadRequestModel
                 {
                     Error = HttpStatusCode.NotFound.ToString(),
-                    Message = "Customer information for given ID doesn't exists.",
+                    Message = "Customer information for given ID doesn't exist.",
                 });
             }
 
@@ -92,9 +102,10 @@ namespace GroceryStoreAPI.Controllers
         [ProducesResponseType(typeof(CustomerModel), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(BadRequestModel), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CustomerModel>> CreateCustomer(CustomerModel newCustomer)
+        public async Task<ActionResult<CustomerModel>> CreateCustomer(CustomerRequestModel newCustomer)
         {
-            var customer = await this.CustomerService.AddCustomer(newCustomer);
+            var customerToBeCreated = this.Mapper.Map<CustomerRequestModel, CustomerModel>(newCustomer);
+            var customer = await this.CustomerService.AddCustomer(customerToBeCreated);
             ActionResult result;
 
             if (customer != null)

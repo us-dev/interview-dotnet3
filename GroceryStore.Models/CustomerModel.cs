@@ -1,4 +1,6 @@
-﻿namespace GroceryStore.Models
+﻿using System;
+
+namespace GroceryStore.Models
 {
     /// <summary>
     /// Model representing a Customer in the GroceryStore domain.
@@ -16,5 +18,10 @@
         /// </summary>
         /// <example>John Doe</example>
         public string Name { get; set; }
+
+        public static explicit operator CustomerModel(object v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

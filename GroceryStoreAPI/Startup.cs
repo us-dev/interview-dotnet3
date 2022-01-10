@@ -1,13 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using AutoMapper;
 using GroceryStore.Services;
+using GroceryStoreAPI.Bootstrap;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace GroceryStoreAPI
@@ -56,6 +58,15 @@ namespace GroceryStoreAPI
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
+            var autoMapperProfiles = new List<Profile>()
+            {
+                new ControllerAutoMapperProfile()
+            };
+
+            services.AddAutoMapper(config =>
+            {
+                config.AddProfiles(autoMapperProfiles);
+            });
 
             services.AddServicesToServiceCollection(this.Configuration);
         }
