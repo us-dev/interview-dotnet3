@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStoreAPI", "GroceryStoreAPI\GroceryStoreAPI.csproj", "{5AD12FE0-F57B-4549-8DC3-A8BDAE56A26B}"
 EndProject
@@ -11,16 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStore.Repository", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStore.Models", "GroceryStore.Models\GroceryStore.Models.csproj", "{B1047713-4C0A-4A86-83D0-C5348A53CB67}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{3FE27D8C-ECAC-4CCC-9E86-C3C7171E0403}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3FE27D8C-ECAC-4CCC-9E86-C3C7171E0403}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStore.Services.UnitTests", "GroceryStore.Services.UnitTests\GroceryStore.Services.UnitTests.csproj", "{1E94CE23-5D4F-422D-BF4C-BD3482D2051B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryStore.Repository.IntegrationTests", "GroceryStore.Repository.IntegrationTests\GroceryStore.Repository.IntegrationTests.csproj", "{8AAAC60B-A9D9-4383-AAAD-67EA5D353BEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStore.Repository.IntegrationTests", "GroceryStore.Repository.IntegrationTests\GroceryStore.Repository.IntegrationTests.csproj", "{8AAAC60B-A9D9-4383-AAAD-67EA5D353BEE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7A9BF236-3AA7-4422-A1E0-EC962F28CE8F} = {7A9BF236-3AA7-4422-A1E0-EC962F28CE8F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryStore.Api.UnitTests", "GroceryStore.Api.UnitTests\GroceryStore.Api.UnitTests.csproj", "{1A3D2A5B-262B-487F-99D0-25570DC926C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryStore.Api.UnitTests", "GroceryStore.Api.UnitTests\GroceryStore.Api.UnitTests.csproj", "{1A3D2A5B-262B-487F-99D0-25570DC926C0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5AD12FE0-F57B-4549-8DC3-A8BDAE56A26B} = {5AD12FE0-F57B-4549-8DC3-A8BDAE56A26B}
 	EndProjectSection

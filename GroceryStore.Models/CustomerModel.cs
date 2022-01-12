@@ -18,10 +18,5 @@ namespace GroceryStore.Models
         /// </summary>
         /// <example>John Doe</example>
         public string Name { get; set; }
-
-        public static explicit operator CustomerModel(object v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
